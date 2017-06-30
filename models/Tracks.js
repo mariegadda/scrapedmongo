@@ -5,12 +5,12 @@ var Schema = mongoose.Schema;
 
 // Create article schema
 var TracksSchema = new Schema({
-  // title is a required string
+
   artist: {
     type: String,
    
   },
-  // link is a required string
+ 
   title: {
     type: String,
 

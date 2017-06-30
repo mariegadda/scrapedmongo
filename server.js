@@ -3,15 +3,15 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-// Requiring our Note and Article models
-var Note = require("./models/Notes.js");
-var Tracks = require("./models/Tracks.js");
+
 // Our scraping tools
 var request = require("request");
 var cheerio = require("cheerio");
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
-
+// Requiring our Note and Article models
+var Note = require("./models/Notes.js");
+var Tracks = require("./models/Tracks.js");
 // ========SERVER AND DB SETUP============================
 
 // Initialize Express
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/pitchfork", { useMongoClient: true });
+mongoose.connect("mongodb://localhost/pitchfork");
 var db = mongoose.connection;
 
 // Show any mongoose errors
@@ -56,10 +56,9 @@ app.get("/scrape", function(req, res) {
 
             result.artist = $(element).children().text();
             result.title = $(element).siblings().text();
+
             //get help traversing dom for this part
             // result.image = $(element).parents(".track-collection-item").children().attr("src");
-
-            console.log(result);
 
             var entry = new Tracks(result);
 
@@ -68,7 +67,7 @@ app.get("/scrape", function(req, res) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log(doc);
+                    console.log("Got in " + doc);
                 }
             });
         });
