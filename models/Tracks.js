@@ -9,13 +9,13 @@ var TracksSchema = new Schema({
   artist: {
     type: String,
     required: true,
-    unique: true
+
   },
  
   title: {
     type: String,
     required: true,
-    unique: true
+  
   },
 
   image: {
@@ -23,10 +23,10 @@ var TracksSchema = new Schema({
    
   },
   // This only saves one note's ObjectId, ref refers to the Note model
-  note: {
-    type: Schema.Types.ObjectId,
-    ref: "Note"
-  }
+  // note: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Note"
+  // }
 });
 
 // Create the Article model with the ArticleSchema

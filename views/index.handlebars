@@ -26,22 +26,37 @@
           <div class="articles">
               <ul> {{#each hndlObject}}
                             <li>
-                                {{this.artist}} 
-                                <br>
-                                {{this.title}} 
-                                <br> <br>
+                             <div class="card blue-grey darken-1 col s12">
+                                  <div class="card-content white-text">
+                                   <h5> {{this.artist}} </h5>
+                                     <br>
+                                        {{this.title}} 
+                                        <a class="btn-floating halfway-fab btn-medium waves-effect waves-light" alt= "Save Track" href="#modal2"><i class="material-icons">add</i></a>
+                                    </div>
+                                </div>
                             </li>                           
                          {{/each}}
-                         </ul>
+                    </ul>
           </div>
         </div>
     </div>
 
-      <!-- Modal Structure -->
+      <!-- Modal Structure for scrape button-->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <h4>Scrape Complete!</h4>
             <p>Check out the Best New Tracks!</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok!</a>
+        </div>
+    </div>
+
+{{!-- modal for save button --}}
+       <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4>Saved!</h4>
+            <p>Track added to your Saved Tracks</p>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok!</a>
