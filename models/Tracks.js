@@ -8,12 +8,14 @@ var TracksSchema = new Schema({
 
   artist: {
     type: String,
-   
+    required: true,
+    unique: true
   },
  
   title: {
     type: String,
-
+    required: true,
+    unique: true
   },
 
   image: {

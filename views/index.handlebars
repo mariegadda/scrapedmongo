@@ -1,0 +1,56 @@
+
+
+<body class="grey lighten-2">
+
+  <nav>
+    <div class="nav-wrapper grey">
+      <a href="#" class="brand-logo">Pitchfork Scraper</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="active"><a href="#" >Home</a></li>
+        <li><a href="./saved.html">Saved Tracks</a></li>
+        <li><a class="btn" id="scrape" href="#modal1">Scrape New Tracks</a></li>
+      </ul>
+    </div>
+  </nav>
+
+    <div class="container" id="title">
+        <div class="row">
+            <div class="col s12">
+                <!-- <h1 class="grey-text text-darken-2 center-align">Pitchfork Scrape</h1> -->
+                <h2 class="grey-text text-darken-2 center-align">Best New Tracks from Pitchfork</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+          <div class="articles">
+              <ul> {{#each tracks}}
+                            <li>
+                                {{tracks.artist}} 
+                                <br>
+                                {{tracks.title}} 
+                            </li>                           
+                         {{/each}}
+                         </ul>
+          </div>
+        </div>
+    </div>
+
+      <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Scrape Complete!</h4>
+            <p>Check out the Best New Tracks!</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok!</a>
+        </div>
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
+</body>
+
+
