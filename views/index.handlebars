@@ -31,14 +31,14 @@
                                    <h5 > {{this.artist}}</h5>
                                      <br>
                                         {{this.title}}
-                                        <a class="btn-floating" href="#modal3"> save </a> 
+                                        <a data-id="{{this.id}}" class="btn-floating" href="#modal3" id="savetrack"> save </a> 
 
                                         <a data-id="{{this.id}}" id="addnote" class="btn-floating halfway-fab btn-medium waves-effect waves-light" href="#modal2"><i class="material-icons">comment</a>
                                         
                                         </i> 
                                           <div data-id="{{this.id}}" class="card-action" id="comments">
-
-                                        {{!--    <p>{{this.note}}</p> --}}
+                                            <p> <small> click here to see the most recent comment!</small> </p>
+                                        {{!--    <p>{{this.note.name}}</p> --}}
                                         </div> 
                                     </div>
                                 </div>

@@ -11,10 +11,11 @@ var TracksSchema = new Schema({
     required: true,
 
   },
- 
+ //title is required to be unique so we don't get the same tracks everytime we scrape
   title: {
     type: String,
     required: true,
+    unique: true
   
   },
 
