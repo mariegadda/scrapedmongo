@@ -22,11 +22,16 @@ var TracksSchema = new Schema({
     type: String,
    
   },
-  // This only saves one note's ObjectId, ref refers to the Note model
-  // note: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Note"
-  // }
+
+  saved:{
+    type: Boolean,
+    default: false,
+  },
+  //This only saves one note's ObjectId, ref refers to the Note model
+  note: {
+    type: Schema.Types.ObjectId,
+    ref: "Note"
+  }
 });
 
 // Create the Article model with the ArticleSchema

@@ -70,9 +70,9 @@ module.exports = function(app) {
             if (error) {
                 console.log(error);
             }
-            // Or send the doc to the browser as a json object
+            // reload the index page 
             else {
-                res.json(doc);
+               res.redirect("/");
             }
         });
         // Tracks.find({})
@@ -89,4 +89,67 @@ module.exports = function(app) {
         //          } 
         //      });
     });
+
+    app.get("/saved", function(req, res){
+          Tracks.find(function(error, doc) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("here's the doc" + doc);
+                var hndlObject = doc;
+                res.render("../views/saved.handlebars", { hndlObject });
+            }
+        });
+    });
+
+
+// creates a new note or replaces an existing note
+app.post("/scrape/:id", function(req, res) {
+  // creates a new note and passes the req.body to the entry
+  var newComment = new Note(req.body);
+  console.log(req.body);
+  // saves the new note the db
+  newComment.save(function(error, doc) {
+    // logs any errors
+    if (error) {
+      console.log(error);
+    }
+    else {
+      // uses the article id to find and update it's note
+      Tracks.findOneAndUpdate({ "_id": req.params.id }, { "note": doc._id })
+      .populate("note")
+      // executes the above query
+      .exec(function(err, doc) {
+        // logs any errors
+        if (err) {
+          console.log(err);
+        }
+        else {
+          // or sends the document to the browser
+          console.log(doc);
+          res.send(doc);
+        }
+      });
+    }
+  });
+});
+
+app.get("/scrape/:id", function(req, res) {
+  // queries the db to find the matching one in our db...
+  Tracks.findOne({ "_id": req.params.id })
+  // populates all of the notes associated with it
+  .populate("note")
+  // executes the query
+  .exec(function(error, doc) {
+    // logs any errors
+    if (error) {
+      console.log(error);
+    }
+    // sends doc to the browser as a json object
+    else {
+      res.json(doc);
+    }
+  });
+});
+//close the module.exports(app) function
 };
