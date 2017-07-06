@@ -148,5 +148,30 @@ app.get("/scrape/:id", function(req, res) {
             }
         });
 });
+
+//get route for deleting a comment
+app.get("/delete/:id", function (req, res) {
+    Note.remove({"_id": req.params.id})
+    .exec(function(error, doc){
+          if (error) {
+                console.log(error);
+            }
+            // sends doc to the browser as a json object
+            else {
+                res.json(doc);
+            }
+    });
+
+});
+
+
+
+
+
 //close the module.exports(app) function
 };
+
+
+
+
+

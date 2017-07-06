@@ -32,7 +32,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://heroku_q4wj7zkc:afp9jn03qsrafot61jbrgftvvi@ds129442.mlab.com:29442/heroku_q4wj7zkc");
+mongoose.connect("mongodb://localhost/pitchfork");
 var db = mongoose.connection;
 
 // Show any mongoose errors

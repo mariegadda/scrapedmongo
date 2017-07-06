@@ -16,8 +16,12 @@ $(document).on("click", "#comments", function(){
     // adds the note information to the page
     .done(function(data) {
       console.log(data);
-      // need to make some kind of for loop here
+      if (data.note === null) {
+      	$(theTrackCard).html("<p> no comments yet! </p>");
+      }else{
+     
       $(theTrackCard).html("<p>"+ data.note.name +" says:" + "</p>" +"<p>"+ data.note.body+"<a data-noteid=" +data.note._id+ " data-id="+ data._id +" id='delete' class='btn-floating btn-small waves-effect waves-light red right-align right'>"+ "<i class='material-icon'>" +"-" +"</i></a>" +"</p>" );
+    }
     });
 });
 
@@ -62,19 +66,11 @@ $(document).on("click", "#delete", function(){
 	var noteId =$(this).attr("data-noteid");
 	console.log("regular " + thisId);
 	console.log("note "+ noteId );
-	//this just makes a blank comment, not exactly what I want it to do
-	//GET HELP WITH THIS!
 
-	//something to do with on the routes page making a post request for a delete path,
-	//and using the request body to find the note to delete, using $pull to remove the note
-	//put the note id in the ajax data??
 	$.ajax({
-		method: "POST",
-		url: "scrape/" + thisId,
-		data: {
-			name: " ",
-			body: " "
-		}
+		method: "GET",
+		url: "delete/" + noteId,
+		
 	})
 	.done(function(data){
 		console.log(data);
