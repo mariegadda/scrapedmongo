@@ -14,3 +14,6 @@
 - Javascript
 - CSS
 
+## Installantion
+
+	To install locally, clone to your local machine and run `npm install` to download the node modules. THe run `node server.js` and navigate your browser to "localhost:3000"
