@@ -101,6 +101,21 @@ app.get("/saved", function(req, res) {
     });
 });
 
+//remove a track from saved page
+app.post("/remove/:id", function(req, res){
+    console.log(req.params.id);
+      Tracks.findOneAndUpdate({"_id": req.params.id }, {"saved": false })
+       .exec(function(err, doc) {
+                    // logs any errors
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        // or sends the document to the browser
+                        console.log(doc);
+                        res.send(doc);
+                    }
+                });
+});
 
 // creates a new note or replaces an existing note
 app.post("/scrape/:id", function(req, res) {

@@ -16,7 +16,7 @@ $(document).on("click", "#comments", function(){
     // adds the note information to the page
     .done(function(data) {
       console.log(data);
-      if (data.note === null) {
+      if (data.note == null) {
       	$(theTrackCard).html("<p> no comments yet! </p>");
       }else{
      
@@ -25,6 +25,7 @@ $(document).on("click", "#comments", function(){
     });
 });
 
+// click function to launch the add comment modal
 $(document).on("click", "#addnote", function() {
     // on the addnote button, save the id number of that document and give it to 
     //a div inside of the modal, so it can be called from the modal submit button. 
@@ -33,6 +34,7 @@ $(document).on("click", "#addnote", function() {
     $("#iddiv").attr("data-id", thisId);
 });
 
+// click function to save the comment to the Note collection in the DB
 $(document).on("click", "#savenote", function() {
     //  capture the id of the mongo document this comment refers to.
     var thisId = $("#iddiv").attr("data-id");
@@ -78,7 +80,7 @@ $(document).on("click", "#delete", function(){
 });
 
 
-
+//click function for saving a track to the saved tracks page 
 $(document).on("click", "#savetrack", function() {
     //  capture the id of the mongo document this button refers to.
     var thisId = $(this).attr("data-id");
@@ -99,6 +101,25 @@ $(document).on("click", "#savetrack", function() {
 });
 
 
+//click function for removing a track from the save tracks page
+$(document).on("click", "#remove", function() {
+    //  capture the id of the mongo document this button refers to.
+    var thisId = $(this).attr("data-id");
+    //grabs the id associated with the article from the save button
+    //runs a POST request to change the saved to true
+    $.ajax({
+            method: "POST",
+            url: "/remove/" + thisId,
+            data: {
+                saved: false
+            }
+        })
+        .done(function(data) {
+            // logs the response
+            console.log(data);
+           
+        });
+});
 
 
 
