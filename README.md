@@ -14,7 +14,7 @@
 - Javascript
 - CSS
 
-##View Heroku Deploy
+## View Heroku Deploy
 
 https://afternoon-ravine-78366.herokuapp.com/
 
