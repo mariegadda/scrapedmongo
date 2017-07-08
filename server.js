@@ -33,10 +33,13 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("public"));
 
 // Database configuration with mongoose for local deploy
-// mongoose.connect("mongodb://localhost/pitchfork");
+// mongoose.connect"mongodb://localhost/pitchfork");
 
 //Database configuration with mongoose for heroku deploy
-mongoose.connect("mongodb://heroku_q4wj7zkc:afp9jn03qsrafot61jbrgftvvi@ds129442.mlab.com:29442/heroku_q4wj7zkc");
+//change this to use a process.env || set up
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pitchfork");
+
+//ßmongoose.connect("mongodb://heroku_q4wj7zkc:afp9jn03qsrafot61jbrgftvvi@ds129442.mlab.com:29442/heroku_q4wj7zkc");
 
 var db = mongoose.connection;
 

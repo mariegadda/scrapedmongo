@@ -39,6 +39,12 @@ $(document).on("click", "#savenote", function() {
     //  capture the id of the mongo document this comment refers to.
     var thisId = $("#iddiv").attr("data-id");
     console.log(thisId);
+    //Prevent user from submitting blank comment
+        var name1 = $("#name").val();
+        var comment1 = $("#textarea1").val();
+    if (name1 === "" || comment1 === "") {
+        alert("Name and comment are required");
+    } else {
     // grabs the id associated with the article from the submit button
     // runs a POST request to change the note, using what's entered in the inputs
     $.ajax({
@@ -55,9 +61,11 @@ $(document).on("click", "#savenote", function() {
             // logs the response
             console.log(data);
             // empties the notes section
-            $("#textarea1").empty();
-            $("#name").empty();
+            $("#textarea1").val("");
+            $("#name").val("");
         });
+ }
+       
 });
 
 //button click function for removing a comment
