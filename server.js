@@ -29,17 +29,11 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 
-// Make public a static dir
+// Make public a static directory
 app.use(express.static("public"));
 
-// Database configuration with mongoose for local deploy
-// mongoose.connect"mongodb://localhost/pitchfork");
-
-//Database configuration with mongoose for heroku deploy
-//change this to use a process.env || set up
+// Database configuration for heroku deploy or local
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pitchfork");
-
-//ßmongoose.connect("mongodb://heroku_q4wj7zkc:afp9jn03qsrafot61jbrgftvvi@ds129442.mlab.com:29442/heroku_q4wj7zkc");
 
 var db = mongoose.connection;
 
@@ -59,7 +53,7 @@ app.set("view engine", "handlebars");
 
 require("./controllers/routes.js")(app);
 
-// ============= Listen on port 3000===========================
+// ============= Listen on PORT===========================
 app.listen(PORT, function() {
     console.log("App running on " + PORT);
 });
