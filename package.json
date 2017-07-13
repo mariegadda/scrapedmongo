@@ -1,6 +1,9 @@
 {
   "name": "scrapedmongo",
   "version": "1.0.0",
+  "engines": {
+    "node": "6.11.1"
+  },
   "description": "scraping a site into a mongo db",
   "main": "index.js",
   "scripts": {
